@@ -26,18 +26,18 @@ namespace UoN.VersionInformation.Providers
         /// Gets version information from a .NET Assembly's `AssemblyInformationalVersion` metadata.
         /// </summary>
         /// <returns>`AssemblyInformationalVersion` as a string.</returns>
-        public async Task<object> GetVersionInformationAsync()
-            => _versionAssembly
-                .GetCustomAttribute<AssemblyInformationalVersionAttribute>()
-                .InformationalVersion;
+        public Task<object> GetVersionInformationAsync()
+            => GetVersionInformationAsync(_versionAssembly);
 
         /// <summary>
         /// Gets version information from a .NET Assembly's `AssemblyInformationalVersion` metadata.
         /// </summary>
         /// <param name="source">The .NET Assembly to get version information from.</param>
         /// <returns>`AssemblyInformationalVersion` as a string.</returns>
-        public async Task<object> GetVersionInformationAsync(object source)
-            => ((Assembly)source).GetCustomAttribute<AssemblyInformationalVersionAttribute>()
-                .InformationalVersion;
+        public Task<object> GetVersionInformationAsync(object source)
+            => Task.FromResult<object>(
+                ((Assembly) source)
+                .GetCustomAttribute<AssemblyInformationalVersionAttribute>()
+                .InformationalVersion);
     }
 }

@@ -25,7 +25,6 @@ namespace ConsoleApp
                 Codename = "Alhambra",
                 TimeStamp = DateTime.UtcNow
             };
-            Console.WriteLine(JsonConvert.SerializeObject(obj));
             Console.WriteLine(JsonConvert.SerializeObject(
                 await version.FromSourceAsync(obj)));
 
@@ -59,10 +58,10 @@ namespace ConsoleApp
 
     internal class MyProvider : IVersionInformationProvider
     {
-        public async Task<object> GetVersionInformationAsync()
-            => "Custom Version Output";
+        public Task<object> GetVersionInformationAsync()
+            => Task.FromResult<object>("Custom Version Output");
 
-        public async Task<object> GetVersionInformationAsync(object source)
-            => source.ToString();
+        public Task<object> GetVersionInformationAsync(object source)
+            => Task.FromResult<object>(source.ToString());
     }
 }
