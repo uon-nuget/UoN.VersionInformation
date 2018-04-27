@@ -8,24 +8,17 @@ namespace UoN.VersionInformation
     public interface IVersionInformationProvider
     {
         /// <summary>
-        /// Gets version information.
+        /// Gets version information, based on provider's configuration.
         /// </summary>
         /// <returns>An object containing the acquired version information.</returns>
         Task<object> GetVersionInformationAsync();
-    }
 
-    /// <summary>
-    /// Typed interface for classes which are able to provide
-    /// version information from source objects of a given type.
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public interface IVersionInformationProvider<in T>
-    {
         /// <summary>
-        /// Gets version information from the passed source.
+        /// Gets version information from the passed source, based on provider's configuration.
+        /// Some providers will not implement this method.
         /// </summary>
-        /// <param name="source"></param>
+        /// <param name="source">The .NET Object to use as the source of the version information.</param>
         /// <returns>An object containing the acquired version information.</returns>
-        Task<object> GetVersionInformationAsync(T source);
+        Task<object> GetVersionInformationAsync(object source);
     }
 }
