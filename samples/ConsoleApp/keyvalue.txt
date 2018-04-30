@@ -1,0 +1,3 @@
+﻿My Key=Hello
+AnotherKey=17
+This value contains the delimiter=Hello=There==

@@ -54,11 +54,16 @@ namespace ConsoleApp
                 })));
 
             // all the text content from a file
-            var fileProvider = new FileContentProvider("version.txt");
+            var fileProvider = new FileContentProvider("filecontent.txt");
             Console.WriteLine(await version.FromSourceAsync(fileProvider));
             version.KeyHandlers.Add("file", fileProvider);
             fileProvider.FilePath = "";
-            Console.WriteLine(await version.ByKeyAsync("file", "version.txt"));
+            Console.WriteLine(await version.ByKeyAsync("file", "filecontent.txt"));
+
+            // key value string pairs from a file
+            Console.WriteLine(JsonConvert.SerializeObject(
+                await version.FromSourceAsync(
+                    new KeyValueFileProvider("keyvalue.txt"))));
 
             Console.Read();
         }

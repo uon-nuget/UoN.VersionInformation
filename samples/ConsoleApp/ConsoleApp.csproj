@@ -18,8 +18,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="version.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="keyvalue.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="filecontent.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
