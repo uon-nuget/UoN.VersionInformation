@@ -8,7 +8,7 @@ namespace UoN.VersionInformation.Providers
     /// </summary>
     public class AssemblyInformationalVersionProvider : IVersionInformationProvider
     {
-        private readonly Assembly _versionAssembly;
+        public Assembly VersionAssembly { get; set; }
 
         /// <summary>
         /// Create a version provider for a given .NET Assembly.
@@ -19,7 +19,7 @@ namespace UoN.VersionInformation.Providers
         /// </param>
         public AssemblyInformationalVersionProvider(Assembly versionAssembly = null)
         {
-            _versionAssembly = versionAssembly ?? Assembly.GetEntryAssembly();
+            VersionAssembly = versionAssembly ?? Assembly.GetEntryAssembly();
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace UoN.VersionInformation.Providers
         /// </summary>
         /// <returns>`AssemblyInformationalVersion` as a string.</returns>
         public Task<object> GetVersionInformationAsync()
-            => GetVersionInformationAsync(_versionAssembly);
+            => GetVersionInformationAsync(VersionAssembly);
 
         /// <summary>
         /// Gets version information from a .NET Assembly's `AssemblyInformationalVersion` metadata.

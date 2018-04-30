@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using UoN.VersionInformation;
+using UoN.VersionInformation.Providers;
 
 namespace ConsoleApp
 {
@@ -48,9 +49,16 @@ namespace ConsoleApp
                 await version.FromSourceAsync(new
                 {
                     Source1 = await version.ByKeyAsync(key),
-                    Source2 = new {Key1 = 1, Key2 = "2"},
+                    Source2 = new { Key1 = 1, Key2 = "2" },
                     Source3 = await version.EntryAssemblyAsync()
                 })));
+
+            // all the text content from a file
+            var fileProvider = new FileContentProvider("version.txt");
+            Console.WriteLine(await version.FromSourceAsync(fileProvider));
+            version.KeyHandlers.Add("file", fileProvider);
+            fileProvider.FilePath = "";
+            Console.WriteLine(await version.ByKeyAsync("file", "version.txt"));
 
             Console.Read();
         }

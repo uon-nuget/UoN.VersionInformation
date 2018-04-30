@@ -17,4 +17,10 @@
     <ProjectReference Include="..\..\src\UoN.VersionInformation\UoN.VersionInformation.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="version.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
