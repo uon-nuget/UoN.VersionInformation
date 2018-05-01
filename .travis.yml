@@ -3,9 +3,8 @@ mono: none
 dotnet: 2.0.0
 dist: trusty
 script:
- - dotnet restore ./src/UoN.VersionInformation
- - dotnet build ./src/UoN.VersionInformation
- - dotnet pack ./src/UoN.VersionInformation
+ - dotnet build ./src/UoN.VersionInformation -c Release
+ - dotnet pack ./src/UoN.VersionInformation -c Release --no-build
 after_success:
  - |
     (test $TRAVIS_BRANCH = "master" || test $TRAVIS_BRANCH = "prerelease") && \
