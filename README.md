@@ -18,7 +18,9 @@ We just happen to use it for version information.
 
 It includes some basic providers which don't add dependencies beyond the `NetStandard.Library`.
 
-For other providers see appropriate repositories. We'll try and maintain a list of first party ones here.
+For Dependency Injection in a .NET Core `IServicesCollection` compatible environment, see `//TODO repo link`
+
+For other providers see appropriate repositories. We'll try and maintain a list of first party ones here. `//TODO repo list`
 
 ## What are its features?
 
@@ -33,15 +35,11 @@ It also accepts some configuration.
 - It can execute a pre-configured Provider (optionally with an input object) identified by a string key using `ByKeyAsync()`.
 - It can execute arbitrary Providers passed to it, or pre-configured Providers assigned to handle specific .NET Types using `FromSourceAsync()`.
 
-### Service Collection Extension Methods
-
-TODO
-
 ### Version Information Providers
 
 The package provides three basic implementations of `IVersionInformationProvider`.
 
-Further implementations are encouraged, based on where you want to get version information from, and the output object structure you would like it to take.
+Further implementations are encouraged, based on where you want to get version information from, and the output object structure you would like it to have.
 
 The implementations in this package only depend on `NetStandard.Library`.
 
@@ -122,17 +120,11 @@ This still enables use in applications targeting `.NET 4.61` and newer, and `.NE
 
 For full implementation support see [here](https://docs.microsoft.com/en-us/dotnet/standard/net-standard).
 
-## Example usage
-
-``` csharp
-// TODO
-```
-
 ## Building from source
 
 We recommend building with the `dotnet` cli, but since the package targets `netstandard1.5` and depends only on `NetStandard.Library`, you should be able to build it in any tooling that supports those requirements.
 
-- Have the .NET Core SDK (prefer 2.0 or newer)
+- Have the .NET Core SDK
 - `dotnet build`
 - Optionally `dotnet pack`
 - Reference the resulting assembly, or NuGet package.
