@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using UoN.VersionInformation;
@@ -14,6 +15,9 @@ namespace ConsoleApp
 
             // original and best
             Console.WriteLine(await version.EntryAssemblyAsync());
+
+            // assembly using the default type handler
+            Console.WriteLine(await version.FromSourceAsync(Assembly.GetEntryAssembly()));
 
             // a custom string
             Console.WriteLine(await version.FromSourceAsync("Hello"));
