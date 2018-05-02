@@ -6,13 +6,8 @@ using UoN.VersionInformation.Providers;
 
 namespace UoN.VersionInformation
 {
-    /// <summary>
-    /// A service for getting version information from .NET Object sources,
-    /// through configured providers.
-    /// </summary>
-    public class VersionInformationService
+    public class VersionInformationService : IVersionInformationService
     {
-
         public static Dictionary<Type, IVersionInformationProvider> DefaultTypeHandlers
             = new Dictionary<Type, IVersionInformationProvider>
             {
@@ -31,30 +26,19 @@ namespace UoN.VersionInformation
                            ?? new Dictionary<string, IVersionInformationProvider>();
         }
 
-        /// <summary>
-        /// Get version information the provider configured to handle the provided key,
-        /// optionally passing a version information source object to the provider.
-        /// </summary>
-        /// <param name="key">The key to identify the configured provider to use.</param>
-        /// <param name="source">Optional source object to pass to the provider.</param>
-        /// <returns></returns>
         public async Task<object> ByKeyAsync(string key, object source = null)
             => await TryExecuteAsync(KeyHandlers[key], source);
 
-        /// <summary>
-        /// Gets the AssemblyInformationalVersion of the application's Entry Assembly
-        /// </summary>
-        /// <returns>The AssemblyInformationalVersion of the application's Entry Assembly</returns>
+        public object ByKey(string key, object source = null)
+            => Task.Run(async () => await ByKeyAsync(key, source)).Result;
+
         public async Task<object> EntryAssemblyAsync()
             => await DefaultTypeHandlers[typeof(Assembly)]
                 .GetVersionInformationAsync(Assembly.GetEntryAssembly());
 
-        /// <summary>
-        /// Handle the provided version information source.
-        /// </summary>
-        /// <param name="source">.NET Object to get Version Information from, or a Provider to provide Version Information.</param>
-        /// <param name="providerKey">Optional key to specify a configured provider to use on the source.</param>
-        /// <returns>A .NET Object containing version information</returns>
+        public object EntryAssembly()
+            => Task.Run(async () => await EntryAssemblyAsync()).Result;
+
         public async Task<object> FromSourceAsync(object source, string providerKey = null)
         {
             // if a key is provided, use the keyed provider
@@ -73,11 +57,10 @@ namespace UoN.VersionInformation
 
             // else just pass through the object as is
             return source;
-
-            //return TypeHandlers.TryGetValue(source.GetType().GetTypeInfo()., out var provider)
-            //    ? await TryExecuteAsync(provider, source) // if we get one, execute it
-            //    : source; // else just pass through the object as is
         }
+
+        public object FromSource(object source, string providerKey = null)
+            => Task.Run(async () => await FromSourceAsync(source, providerKey)).Result;
 
         private async Task<object> TryExecuteAsync(IVersionInformationProvider provider, object source = null)
         {
