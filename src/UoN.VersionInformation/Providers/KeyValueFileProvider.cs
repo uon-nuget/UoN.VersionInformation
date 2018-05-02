@@ -16,7 +16,7 @@ namespace UoN.VersionInformation.Providers
         public string Delimiter { get; set; }
 
         public KeyValueFileProvider(
-            string filePath,
+            string filePath = null,
             string delimiter = "=")
             : base(filePath)
         {
