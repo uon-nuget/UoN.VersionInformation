@@ -26,6 +26,7 @@ namespace UoN.VersionInformation.Providers
 
         public virtual async Task<object> GetVersionInformationAsync(object source)
         {
+            if (string.IsNullOrWhiteSpace((string)source)) return null;
             try
             {
                 using (var reader = File.OpenText((string)source))

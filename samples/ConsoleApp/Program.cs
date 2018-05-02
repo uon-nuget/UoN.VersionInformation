@@ -84,6 +84,11 @@ namespace ConsoleApp
                 },
                 new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore }));
 
+            // some synchronous tests
+            Console.WriteLine(version.EntryAssembly());
+            Console.WriteLine(version.FromSource("hello there"));
+            Console.WriteLine(JsonConvert.SerializeObject(version.ByKey("file")));
+
             Console.Read();
         }
     }
