@@ -4,8 +4,7 @@
 [![Build Status](https://travis-ci.org/UniversityOfNottingham/UoN.VersionInformation.svg?branch=master)](https://travis-ci.org/UniversityOfNottingham/UoN.VersionInformation)
 [![NuGet](https://img.shields.io/nuget/v/UoN.VersionInformation.svg)](https://www.nuget.org/packages/UoN.VersionInformation/)
 
-
-## What is it?
+# What is it?
 
 A pluggable service for retrieving version information from .NET Object types.
 
@@ -18,13 +17,14 @@ We just happen to use it for version information.
 
 It includes some basic providers which don't add dependencies beyond the `NetStandard.Library`.
 
-For Dependency Injection in a .NET Core `IServicesCollection` compatible environment, see `//TODO repo link`
+## Dependency Injection
 
-For other providers see appropriate repositories. We'll try and maintain a list of first party ones here. `//TODO repo list`
+For Dependency Injection in a .NET Core `IServicesCollection` compatible environment,
+see [UoN.VersionInformation.DependencyInjection](https://github.com/uon-nuget/UoN.VersionInformation.DependencyInjection)
 
-## What are its features?
+# What are its features?
 
-### Version Information Service
+## Version Information Service
 
 This is the core service.
 
@@ -35,7 +35,7 @@ It also accepts some configuration.
 - It can execute a pre-configured Provider (optionally with an input object) identified by a string key using `ByKeyAsync()`.
 - It can execute arbitrary Providers passed to it, or pre-configured Providers assigned to handle specific .NET Types using `FromSourceAsync()`.
 
-### Version Information Providers
+## Version Information Providers
 
 The package provides three basic implementations of `IVersionInformationProvider`.
 
@@ -43,7 +43,7 @@ Further implementations are encouraged, based on where you want to get version i
 
 The implementations in this package only depend on `NetStandard.Library`.
 
-#### AssemblyInformationalVersionProvider
+### AssemblyInformationalVersionProvider
 
 This provides the behaviour of `EntryAssemblyAsync()`. It is also by default configured as the Type Handler for .NET `Assembly` objects.
 
@@ -61,7 +61,7 @@ service.FromSourceAsync(new AssemblyInformationalVersionProvider());
 service.FromSourceAsync(new AssemblyInformationalVersionProvider(MyAssembly));
 ```
 
-#### FileContentProvider
+### FileContentProvider
 
 This is a very basic Provider which reads all the content from a file, and returns it as a string. It's suitable for use as a base class by other file-based Providers.
 
@@ -83,7 +83,7 @@ service.ByKeyAsync("file", "path/to/file.txt");
 service.FromSourceAsync("my string"); //absolutely fine
 ```
 
-#### KeyValueFileProvider
+### KeyValueFileProvider
 
 This is a very naive provider for reading Key Value pairs from text files.
 
@@ -112,7 +112,7 @@ provider.Delimiter = ":";
 version.FromSourceAsync(provider);
 ```
 
-## Dependencies
+# Dependencies
 
 The library targets `netstandard1.5`, due to its use of `Assembly.GetEntryAssembly()`.
 
@@ -120,7 +120,7 @@ This still enables use in applications targeting `.NET 4.61` and newer, and `.NE
 
 For full implementation support see [here](https://docs.microsoft.com/en-us/dotnet/standard/net-standard).
 
-## Building from source
+# Building from source
 
 We recommend building with the `dotnet` cli, but since the package targets `netstandard1.5` and depends only on `NetStandard.Library`, you should be able to build it in any tooling that supports those requirements.
 
@@ -129,7 +129,7 @@ We recommend building with the `dotnet` cli, but since the package targets `nets
 - Optionally `dotnet pack`
 - Reference the resulting assembly, or NuGet package.
 
-## Contributing
+# Contributing
 
 If you make useful providers that depend only on `NetStandard.Library`, raise a PR and they can be added to the base package.
 

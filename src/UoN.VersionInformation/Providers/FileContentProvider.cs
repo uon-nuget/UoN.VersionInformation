@@ -14,7 +14,7 @@ namespace UoN.VersionInformation.Providers
     {
         public string FilePath { get; set; }
 
-        public FileContentProvider(string filePath)
+        public FileContentProvider(string filePath = null)
         {
             FilePath = filePath;
         }
