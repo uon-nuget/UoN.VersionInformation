@@ -65,6 +65,21 @@ namespace ConsoleApp
                 await version.FromSourceAsync(
                     new KeyValueFileProvider("keyvalue.txt"))));
 
+            // no file (returns null)
+            Console.WriteLine(JsonConvert.SerializeObject(
+                await version.FromSourceAsync(
+                    new KeyValueFileProvider { FileOptional = true })));
+
+            // hiding null properties
+            Console.WriteLine(JsonConvert.SerializeObject(
+                new
+                {
+                    Prop1 = "Prop2 should be hidden because it's null",
+                    Prop2 = await version.FromSourceAsync(
+                        new KeyValueFileProvider { FileOptional = true })
+                },
+                new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore }));
+
             Console.Read();
         }
     }

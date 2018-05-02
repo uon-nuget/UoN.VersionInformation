@@ -25,7 +25,10 @@ namespace UoN.VersionInformation.Providers
 
         public override async Task<object> GetVersionInformationAsync(object source)
         {
-            using (var reader = File.OpenText((string)source))
+            var fileContent = await base.GetVersionInformationAsync((string)source);
+            if (fileContent == null) return null;
+
+            using (var reader = new StringReader((string)fileContent))
             {
                 var result = new Dictionary<string, string>();
                 string line;
