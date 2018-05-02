@@ -67,9 +67,16 @@ namespace UoN.VersionInformation
                 return await p.GetVersionInformationAsync();
 
             // Try and get a typed provider
-            return TypeHandlers.TryGetValue(source.GetType(), out var provider)
-                ? await TryExecuteAsync(provider, source) // if we get one, execute it
-                : source; // else just pass through the object as is
+            foreach (var kv in TypeHandlers)
+                if (kv.Key.GetTypeInfo().IsAssignableFrom(source.GetType()))
+                    return await TryExecuteAsync(kv.Value, source);
+
+            // else just pass through the object as is
+            return source;
+
+            //return TypeHandlers.TryGetValue(source.GetType().GetTypeInfo()., out var provider)
+            //    ? await TryExecuteAsync(provider, source) // if we get one, execute it
+            //    : source; // else just pass through the object as is
         }
 
         private async Task<object> TryExecuteAsync(IVersionInformationProvider provider, object source = null)
