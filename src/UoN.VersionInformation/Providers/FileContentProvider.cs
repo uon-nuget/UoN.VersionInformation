@@ -13,10 +13,12 @@ namespace UoN.VersionInformation.Providers
     public class FileContentProvider : IVersionInformationProvider
     {
         public string FilePath { get; set; }
+        public bool FileOptional { get; set; }
 
-        public FileContentProvider(string filePath = null)
+        public FileContentProvider(string filePath = null, bool optional = false)
         {
             FilePath = filePath;
+            FileOptional = optional;
         }
 
         public virtual async Task<object> GetVersionInformationAsync()
@@ -24,8 +26,15 @@ namespace UoN.VersionInformation.Providers
 
         public virtual async Task<object> GetVersionInformationAsync(object source)
         {
-            using (var reader = File.OpenText((string)source))
-                return await reader.ReadToEndAsync();
+            try
+            {
+                using (var reader = File.OpenText((string)source))
+                    return await reader.ReadToEndAsync();
+            } catch
+            {
+                if (!FileOptional) throw;
+            }
+            return null;
         }
     }
 }
