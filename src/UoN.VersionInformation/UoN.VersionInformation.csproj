@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.5</TargetFramework>
-    <PackageVersion>2.0.0-beta.1</PackageVersion>
+    <Version>2.0.0-beta.1</Version>
 
     <Authors>UoN Application Development</Authors>
 
