@@ -6,7 +6,7 @@ using UoN.VersionInformation.Providers;
 
 namespace UoN.VersionInformation
 {
-    public class VersionInformationService : IVersionInformationService
+    public class VersionInformationService(VersionInformationOptions options = null) : IVersionInformationService
     {
         public static Dictionary<Type, IVersionInformationProvider> DefaultTypeHandlers
             = new Dictionary<Type, IVersionInformationProvider>
@@ -14,17 +14,12 @@ namespace UoN.VersionInformation
                 [typeof(Assembly)] = new AssemblyInformationalVersionProvider()
             };
 
-        public Dictionary<Type, IVersionInformationProvider> TypeHandlers { get; }
+        public Dictionary<Type, IVersionInformationProvider> TypeHandlers { get; } =
+            options?.TypeHandlers ?? DefaultTypeHandlers;
 
-        public Dictionary<string, IVersionInformationProvider> KeyHandlers { get; }
+        public Dictionary<string, IVersionInformationProvider> KeyHandlers { get; } = options?.KeyHandlers
+            ?? new Dictionary<string, IVersionInformationProvider>();
 
-
-        public VersionInformationService(VersionInformationOptions options = null)
-        {
-            TypeHandlers = options?.TypeHandlers ?? DefaultTypeHandlers;
-            KeyHandlers = options?.KeyHandlers
-                           ?? new Dictionary<string, IVersionInformationProvider>();
-        }
 
         public async Task<object> ByKeyAsync(string key, object source = null)
             => await TryExecuteAsync(KeyHandlers[key], source);
@@ -62,7 +57,7 @@ namespace UoN.VersionInformation
         public object FromSource(object source, string providerKey = null)
             => Task.Run(async () => await FromSourceAsync(source, providerKey)).Result;
 
-        private async Task<object> TryExecuteAsync(IVersionInformationProvider provider, object source = null)
+        private static async Task<object> TryExecuteAsync(IVersionInformationProvider provider, object source = null)
         {
             try
             {

@@ -11,34 +11,26 @@ namespace UoN.VersionInformation.Providers
     /// 
     /// Keys must not contain the Key / Value delimiter.
     /// </summary>
-    public class KeyValueFileProvider : FileContentProvider
+    public class KeyValueFileProvider(
+        string filePath = null,
+        string delimiter = "=") : FileContentProvider(filePath)
     {
-        public string Delimiter { get; set; }
-
-        public KeyValueFileProvider(
-            string filePath = null,
-            string delimiter = "=")
-            : base(filePath)
-        {
-            Delimiter = delimiter;
-        }
+        public string Delimiter { get; set; } = delimiter;
 
         public override async Task<object> GetVersionInformationAsync(object source)
         {
             var fileContent = await base.GetVersionInformationAsync((string)source);
             if (fileContent == null) return null;
 
-            using (var reader = new StringReader((string)fileContent))
+            using var reader = new StringReader((string)fileContent);
+            var result = new Dictionary<string, string>();
+            while (await reader.ReadLineAsync() is { } line)
             {
-                var result = new Dictionary<string, string>();
-                string line;
-                while ((line = await reader.ReadLineAsync()) != null)
-                {
-                    var parts = line.Split(new[] { '=' }, 2);
-                    result.Add(parts[0], parts[1]);
-                }
-                return result;
+                var parts = line.Split(new[] { '=' }, 2);
+                result.Add(parts[0], parts[1]);
             }
+
+            return result;
         }
     }
 }

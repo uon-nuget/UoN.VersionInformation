@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.5</TargetFramework>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>2.0.0</PackageVersion>
 
     <Authors>UoN Application Development</Authors>
 
@@ -11,14 +11,14 @@
     </Description>
 
     <PackageReleaseNotes>
-      First release.
+      Updated release.
     </PackageReleaseNotes>
 
-    <Copyright>Copyright 2018 (c) University of Nottingham.</Copyright>
+    <Copyright>Copyright 2024 (c) University of Nottingham.</Copyright>
 
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageIconUrl>https://raw.githubusercontent.com/uon-nuget/assets/master/nuget-package-icon.png</PackageIconUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/uon-nuget/UoN.VersionInformation/master/LICENSE</PackageLicenseUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/uon-nuget/assets/main/nuget-package-icon.png</PackageIconUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/uon-nuget/UoN.VersionInformation/main/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/uon-nuget/UoN.VersionInformation</PackageProjectUrl>
     <RepositoryUrl>https://github.com/uon-nuget/UoN.VersionInformation</RepositoryUrl>
     <PackageTags>uon version netstandard</PackageTags>
