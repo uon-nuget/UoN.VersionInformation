@@ -23,9 +23,4 @@
     <RepositoryUrl>https://github.com/uon-nuget/UoN.VersionInformation</RepositoryUrl>
     <PackageTags>uon version netstandard</PackageTags>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
-
 </Project>

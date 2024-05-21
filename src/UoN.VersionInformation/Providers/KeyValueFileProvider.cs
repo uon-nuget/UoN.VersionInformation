@@ -26,15 +26,18 @@ namespace UoN.VersionInformation.Providers
             var fileContent = await base.GetVersionInformationAsync((string)source);
             if (fileContent == null) return null;
 
-            using var reader = new StringReader((string)fileContent);
-            var result = new Dictionary<string, string>();
-            while (await reader.ReadLineAsync() is { } line)
+            using (var reader = new StringReader((string)fileContent))
             {
-                var parts = line.Split(new[] { '=' }, 2);
-                result.Add(parts[0], parts[1]);
-            }
+                var result = new Dictionary<string, string>();
+                string line;
+                while ((line = await reader.ReadLineAsync()) != null)
+                {
+                    var parts = line.Split(new[] { '=' }, 2);
+                    result.Add(parts[0], parts[1]);
+                }
 
-            return result;
+                return result;
+            }
         }
     }
 }

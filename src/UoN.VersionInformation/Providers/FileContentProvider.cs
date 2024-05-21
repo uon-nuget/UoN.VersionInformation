@@ -29,10 +29,12 @@ namespace UoN.VersionInformation.Providers
             if (string.IsNullOrWhiteSpace((string)source)) return null;
             try
             {
-                using var reader = File.OpenText((string)source);
-                return await reader.ReadToEndAsync();
+                using (var reader = File.OpenText((string)source))
+                {
+                    return await reader.ReadToEndAsync();
+                }
             }
-            catch (Exception e) when (e is DirectoryNotFoundException or FileNotFoundException)
+            catch (Exception e) when (e is DirectoryNotFoundException || e is FileNotFoundException)
             {
                 if (!FileOptional) throw;
             }
