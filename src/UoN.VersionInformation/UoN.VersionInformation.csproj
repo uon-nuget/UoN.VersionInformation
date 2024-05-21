@@ -17,7 +17,7 @@
     <Copyright>Copyright 2024 (c) University of Nottingham.</Copyright>
 
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageIconUrl>https://raw.githubusercontent.com/uon-nuget/assets/main/nuget-package-icon.png</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/uon-nuget/assets/master/nuget-package-icon.png</PackageIconUrl>
     <PackageLicenseUrl>https://raw.githubusercontent.com/uon-nuget/UoN.VersionInformation/main/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/uon-nuget/UoN.VersionInformation</PackageProjectUrl>
     <RepositoryUrl>https://github.com/uon-nuget/UoN.VersionInformation</RepositoryUrl>

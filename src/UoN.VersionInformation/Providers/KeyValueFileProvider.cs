@@ -1,36 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace UoN.VersionInformation.Providers
+namespace UoN.VersionInformation.Providers;
+
+/// <summary>
+/// A naive provider which reads a text file line by line
+/// parsing each line into a key and a value.
+/// 
+/// Keys must not contain the Key / Value delimiter.
+/// </summary>
+public class KeyValueFileProvider(
+    string filePath = null,
+    string delimiter = "=") : FileContentProvider(filePath)
 {
-    /// <summary>
-    /// A naive provider which reads a text file line by line
-    /// parsing each line into a key and a value.
-    /// 
-    /// Keys must not contain the Key / Value delimiter.
-    /// </summary>
-    public class KeyValueFileProvider(
-        string filePath = null,
-        string delimiter = "=") : FileContentProvider(filePath)
+    public string Delimiter { get; set; } = delimiter;
+
+    public override async Task<object> GetVersionInformationAsync(object source)
     {
-        public string Delimiter { get; set; } = delimiter;
+        var fileContent = await base.GetVersionInformationAsync((string)source);
+        if (fileContent == null) return null;
 
-        public override async Task<object> GetVersionInformationAsync(object source)
+        using var reader = new StringReader((string)fileContent);
+        var result = new Dictionary<string, string>();
+        while (await reader.ReadLineAsync() is { } line)
         {
-            var fileContent = await base.GetVersionInformationAsync((string)source);
-            if (fileContent == null) return null;
-
-            using var reader = new StringReader((string)fileContent);
-            var result = new Dictionary<string, string>();
-            while (await reader.ReadLineAsync() is { } line)
-            {
-                var parts = line.Split(new[] { '=' }, 2);
-                result.Add(parts[0], parts[1]);
-            }
-
-            return result;
+            var parts = line.Split(new[] { '=' }, 2);
+            result.Add(parts[0], parts[1]);
         }
+
+        return result;
     }
 }

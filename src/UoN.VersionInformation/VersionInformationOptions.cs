@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace UoN.VersionInformation
-{
-    public class VersionInformationOptions
-    {
-        public Dictionary<Type, IVersionInformationProvider> TypeHandlers { get; set; }
-            = VersionInformationService.DefaultTypeHandlers;
+namespace UoN.VersionInformation;
 
-        public Dictionary<string, IVersionInformationProvider> KeyHandlers { get; set; }
-            = new Dictionary<string, IVersionInformationProvider>();
-    }
+public class VersionInformationOptions
+{
+    public Dictionary<Type, IVersionInformationProvider> TypeHandlers { get; set; }
+        = VersionInformationService.DefaultTypeHandlers;
+
+    public Dictionary<string, IVersionInformationProvider> KeyHandlers { get; set; }
+        = new Dictionary<string, IVersionInformationProvider>();
 }
