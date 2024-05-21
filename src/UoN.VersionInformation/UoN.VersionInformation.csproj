@@ -1,26 +1,37 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard1.5</TargetFramework>
-    <Version>2.0.0-beta.1</Version>
+    <PropertyGroup>
+        <TargetFramework>netstandard1.5</TargetFramework>
+        <Version>2.0.0-beta.2</Version>
 
-    <Authors>UoN Application Development</Authors>
+        <Authors>UoN Application Development</Authors>
 
-    <Description>
-      .NET Standard solution for loading data from an arbitrary source (via an implemented provider) and returning it as a .NET Object.
-    </Description>
+        <Description>
+            .NET Standard solution for loading data from an arbitrary source (via an implemented provider) and returning it as a .NET Object.
+        </Description>
 
-    <PackageReleaseNotes>
-      Updated release.
-    </PackageReleaseNotes>
+        <PackageReleaseNotes>
+            Updated release.
+        </PackageReleaseNotes>
 
-    <Copyright>Copyright 2024 (c) University of Nottingham.</Copyright>
+        <Copyright>Copyright 2024 (c) University of Nottingham.</Copyright>
 
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageIconUrl>https://raw.githubusercontent.com/uon-nuget/assets/master/nuget-package-icon.png</PackageIconUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/uon-nuget/UoN.VersionInformation/main/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/uon-nuget/UoN.VersionInformation</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/uon-nuget/UoN.VersionInformation</RepositoryUrl>
-    <PackageTags>uon version netstandard</PackageTags>
-  </PropertyGroup>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+
+        <PackageIcon>icon.png</PackageIcon>
+        <PackageIconUrl>https://raw.githubusercontent.com/uon-nuget/assets/master/nuget-package-icon.png</PackageIconUrl>
+
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+
+        <PackageProjectUrl>https://github.com/uon-nuget/UoN.VersionInformation</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/uon-nuget/UoN.VersionInformation</RepositoryUrl>
+        
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageTags>uon version netstandard</PackageTags>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="icon.png" Pack="true" PackagePath="\"/>
+        <None Include="README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
 </Project>
