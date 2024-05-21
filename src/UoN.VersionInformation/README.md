@@ -20,7 +20,7 @@ It includes some basic providers which don't add dependencies beyond the `NetSta
 ## Dependency Injection
 
 For Dependency Injection in a .NET Core `IServicesCollection` compatible environment,
-see [UoN.VersionInformation.DependencyInjection](https://github.com/uon-nuget/UoN.VersionInformation.DependencyInjection)
+see [UoN.VersionInformation.DependencyInjection](../UoN.VersionInformation.DependencyInjection/README.md)
 
 # What are its features?
 
@@ -108,7 +108,7 @@ var provider = new KeyValueFileProvider("path/to/file.txt");
 version.FromSourceAsync(provider);
 
 provider.Delimiter = ":";
-// { "Key 1": "=Value", "Key2Value": "With=" }
+// { "Key 1": "=Value", "Key2=Value": "With=" }
 version.FromSourceAsync(provider);
 ```
 
