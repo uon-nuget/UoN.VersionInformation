@@ -21,11 +21,11 @@ Refer to the sample application for example usage.
 
 # Dependencies
 
-The library targets `netstandard2.0` and depends on `Microsoft.Extensions.DependencyInjection` 2.0.0.
+The library targets `netstandard2.0` and depends on `Microsoft.Extensions.DependencyInjection.Abstractions` `8.x`.
 
 # Building from source
 
-We recommend building with the `dotnet` cli, but since the package targets `netstandard2.0` and depends on `Microsoft.Extensions.DependencyInjection` 2.0.0, you should be able to build it in any tooling that supports those requirements.
+We recommend building with the `dotnet` cli, but since the package targets `netstandard2.0` and depends on `Microsoft.Extensions.DependencyInjection.Abstractions` 8.0.0, you should be able to build it in any tooling that supports those requirements.
 
 - Have the .NET Core SDK
 - `dotnet build`
