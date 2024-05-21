@@ -1,36 +1,35 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <PackageVersion>2.0.0</PackageVersion>
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <PackageVersion>2.0.0</PackageVersion>
 
-    <Authors>UoN Application Development</Authors>
+        <Authors>UoN Application Development</Authors>
 
-    <Description>
-      Version middleware for ASP.NET Core, allows exposing version information via an endpoint.
-    </Description>
+        <Description>
+            Version middleware for ASP.NET Core, allows exposing version information via an endpoint.
+        </Description>
 
-    <PackageReleaseNotes>
-This release adds Endpoint routing support and removes the Newtonsoft dependency.
-    </PackageReleaseNotes>
+        <PackageReleaseNotes>
+            This release adds Endpoint routing support and removes the Newtonsoft dependency.
+        </PackageReleaseNotes>
 
-    <Copyright>Copyright 2024 (c) University of Nottingham.</Copyright>
+        <Copyright>Copyright 2024 (c) University of Nottingham.</Copyright>
 
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageIconUrl>https://raw.githubusercontent.com/uon-nuget/assets/master/nuget-package-icon.png</PackageIconUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/uon-nuget/UoN.VersionInformation/main/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/UniversityOfNottingham/UoN.VersionInformation</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/UniversityOfNottingham/UoN.VersionInformation</RepositoryUrl>
-    <PackageTags>uon version middleware aspnetcore netstandard</PackageTags>
-  </PropertyGroup>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <PackageIconUrl>https://raw.githubusercontent.com/uon-nuget/assets/master/nuget-package-icon.png</PackageIconUrl>
+        <PackageLicenseUrl>https://raw.githubusercontent.com/uon-nuget/UoN.VersionInformation/main/LICENSE</PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/UniversityOfNottingham/UoN.VersionInformation</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/UniversityOfNottingham/UoN.VersionInformation</RepositoryUrl>
+        <PackageTags>uon version middleware aspnetcore netstandard</PackageTags>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore" Version="2.0.0" />
-<!--    <PackageReference Include="UoN.VersionInformation" Version="1.0.0" />-->
-  </ItemGroup>
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\UoN.VersionInformation\UoN.VersionInformation.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\UoN.VersionInformation\UoN.VersionInformation.csproj"/>
+    </ItemGroup>
 
 </Project>
