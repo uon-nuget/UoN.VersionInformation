@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using Microsoft.AspNetCore.Http;
 using UoN.AspNetCore.VersionMiddleware;
 using UoN.VersionInformation.Providers;
 
@@ -25,7 +26,7 @@ namespace Microsoft.AspNetCore.Builder
         /// <returns>The `IApplicationBuilder` instance</returns>
         public static IApplicationBuilder UseUonVersion(
             this IApplicationBuilder app,
-            string path,
+            PathString path,
             object? source = null)
         {
             if (app == null) throw new ArgumentNullException(nameof(app));
