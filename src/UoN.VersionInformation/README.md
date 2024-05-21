@@ -1,8 +1,8 @@
 # UoN.VersionInformation
 
-[![License](https://img.shields.io/badge/licence-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://travis-ci.org/UniversityOfNottingham/UoN.VersionInformation.svg?branch=master)](https://travis-ci.org/UniversityOfNottingham/UoN.VersionInformation)
+[![Build Status](https://github.com/uon-nuget/UoN.VersionInformation/actions/workflows/build.versioninformation.yml/badge.svg)](https://github.com/uon-nuget/UoN.VersionInformation/actions/workflows/build.versioninformation.yml)
 [![NuGet](https://img.shields.io/nuget/v/UoN.VersionInformation.svg)](https://www.nuget.org/packages/UoN.VersionInformation/)
+[![License](https://img.shields.io/badge/licence-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 # What is it?
 
