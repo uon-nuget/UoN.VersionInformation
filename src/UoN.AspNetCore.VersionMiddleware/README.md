@@ -13,25 +13,43 @@ We use it at UoN so that we can check the version of a web app wherever it's dep
 
 ## What are its features?
 
-It exposes the version output of [UoN.VersionInformation](https://github.com/uon-nuget/UoN.VersionInformation) as JSON data at an http endpoint.
+It exposes the version output of [UoN.VersionInformation](../UoN.VersionInformation/README.md) as JSON data at an http endpoint.
 
 ### Middleware Extension Methods
-It provides three `IApplicationBuilder` Extension methods for you to use in `Startup.Configure()`:
 
-- `app.UseVersion(source)`
+#### Endpoint Routing
+
+It provides four `IEndpointRouteBuilder` Extension methods for you to use in `Startup.Configure()`:
+
+- `app.MapUonVersionInformation()`
+  - adds a `/version` endpoint to the ASP.Net Core pipeline.
+  - returns `AssemblyInformationalVersion` for the Application's Entry Assembly.
+- `app.MapUonVersionInformation(path)`
+  - behaves as above but with a custom route path
+- `app.MapUonVersionInformation(source)`
+  - adds a `/version` endpoint to the ASP.Net Core pipeline.
+  - expects a valid source accepted by `VersionInformationService`
+- `app.MapUonVersionInformation(path, source)`
+  - behaves as above but with a custom route path
+
+#### Terminal Middleware
+
+> [!NOTE]
+> Prefer Endpoint routing above unless you know you need Terminal Middleware
+
+It provides two traditional "Terminal Middleware" `IApplicationBuilder` Extension methods for you to use in `Startup.Configure()`:
+
+- `app.UseUonVersionInformation(source)`
     - adds a `/version` route to the ASP.Net Core pipeline.
     - expects a valid source accepted by `VersionInformationService`
-- `app.MapVersion(path, source)`
+- `app.UseUonVersionInformation(path, source)`
     - behaves as above but with a custom route path
-- `app.MapVersion(path, assembly)`
-    - provides a custom route path
-    - returns `AssemblyInformationalVersion` for the specified assembly as a JSON string
 
 ## Dependencies
 
-The library targets `netstandard2.0` and depends upon ASP.NET Core 2.0 and UoN.VersionInformation.
+The library targets `net5.0` and depends upon the ASP.NET Core app framework package and UoN.VersionInformation.
 
-If you can use ASP.NET Core 2, you can use this library.
+If you can use ASP.NET Core 5.x or newer, you can use this library.
 
 ## Example usage
 
@@ -40,39 +58,28 @@ If you can use ASP.NET Core 2, you can use this library.
 ``` csharp
 public class Startup
 {
-  ...
+  // ...
 
-  // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
   public void Configure(IApplicationBuilder app, IHostingEnvironment env)
   {
-    if (env.IsDevelopment())
-    {
-      app.UseDeveloperExceptionPage();
-    }
-    else
-    {
-        app.UseExceptionHandler("/Home/Error");
-    }
-
-    app.UseVersion(); //adds `/version` to the pipeline, so if that endpoint is requested, the pipeline will short circuit here
+    // ...
     
     app.UseStaticFiles();
 
-    app.UseMvc(routes =>
-    {
-        routes.MapRoute(
-            name: "default",
-            template: "{controller=Home}/{action=Index}/{id?}");
-    });
+    app.UseRouting();
+    
+    app.MapUonVersionInformation(); //adds `/version` endpoint
   }
 }
 ```
 
+Refer to the samples for additional usage examples.
+
 ## Building from source
 
-We recommend building with the `dotnet` cli, but since the package targets `netstandard2.0` and depends only on ASP.Net Core 2.0, you should be able to build it in any tooling that supports those requirements.
+We recommend building with the `dotnet` cli, but since the package targets `net5.0` and depends only on ASP.Net Core, you should be able to build it in any tooling that supports those requirements.
 
-- Have the .NET Core SDK 2.0 or newer
+- Have the .NET Core SDK 5.0 or newer
 - `dotnet build`
 - Optionally `dotnet pack`
 - Reference the resulting assembly, or NuGet package.
