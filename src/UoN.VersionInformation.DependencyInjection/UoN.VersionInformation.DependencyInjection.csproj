@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageVersion>2.0.0</PackageVersion>
+
+    <Authors>UoN Application Development</Authors>
+
+    <Description>
+      `IServiceCollection` extensions for using `UoN.VersionInformation` with .NET Core Dependency Injection.
+    </Description>
+
+    <PackageReleaseNotes>
+      First release.
+    </PackageReleaseNotes>
+
+    <Copyright>Copyright 2024 (c) University of Nottingham.</Copyright>
+
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageIconUrl>https://raw.githubusercontent.com/uon-nuget/assets/master/nuget-package-icon.png</PackageIconUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/uon-nuget/UoN.VersionInformation.DependencyInjection/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/uon-nuget/UoN.VersionInformation.DependencyInjection</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/uon-nuget/UoN.VersionInformation.DependencyInjection</RepositoryUrl>
+    <PackageTags>uon version netstandard dependencyinjection</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
+<!--    <PackageReference Include="UoN.VersionInformation" Version="1.0.0" />-->
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UoN.VersionInformation\UoN.VersionInformation.csproj" />
+  </ItemGroup>
+
+</Project>
