@@ -27,7 +27,7 @@ namespace UoN.AspNetCore.VersionMiddleware
         /// 
         /// Defaults to Entry Assembly Informational Version.
         /// </param>
-        public VersionMiddleware(RequestDelegate next, object versionSource = null)
+        public VersionMiddleware(RequestDelegate next, object? versionSource = null)
         {
             _versionSource = versionSource ??
                              new AssemblyInformationalVersionProvider(Assembly.GetEntryAssembly());
@@ -40,7 +40,7 @@ namespace UoN.AspNetCore.VersionMiddleware
 
             var service =
                 // try and get a version information service by DI
-                (VersionInformationService)
+                (VersionInformationService?)
                 context.RequestServices.GetService(
                     typeof(VersionInformationService))
                 // else use a new one with default options
