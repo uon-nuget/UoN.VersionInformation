@@ -1,9 +1,16 @@
 # UoN.AspNetCore.VersionMiddleware
 
-[![License](https://img.shields.io/badge/licence-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://travis-ci.org/uon-nuget/UoN.AspNetCore.VersionMiddleware.svg?branch=master)](https://travis-ci.org/uon-nuget/UoN.AspNetCore.VersionMiddleware)
-[![NuGet](https://img.shields.io/nuget/v/UoN.AspNetCore.VersionMiddleware.svg)](https://www.nuget.org/packages/UoN.AspNetCore.VersionMiddleware/)
+[![Build Status]][Build Workflow]
+[![NuGet Badge]][NuGet Package]
+[![MIT License Badge]][MIT License]
 
+[Build Workflow]: https://github.com/uon-nuget/UoN.VersionInformation/actions/workflows/build.versionmiddleware.yml
+[Build Status]: https://github.com/uon-nuget/UoN.VersionInformation/actions/workflows/build.versionmiddleware.yml/badge.svg
+[NuGet Package]: https://www.nuget.org/packages/UoN.AspNetCore.VersionMiddleware/
+[NuGet Badge]: https://img.shields.io/nuget/v/UoN.AspNetCore.VersionMiddleware.svg
+
+[MIT License]: https://opensource.org/licenses/MIT
+[MIT License Badge]: https://img.shields.io/badge/licence-MIT-blue.svg
 
 ## What is it?
 
@@ -40,11 +47,11 @@ It provides four `IEndpointRouteBuilder` Extension methods for you to use in `St
 It provides two traditional "Terminal Middleware" `IApplicationBuilder` Extension methods for you to use in `Startup.Configure()`:
 
 - `app.UseUonVersionInformation(source)`
-    - adds a `/version` route to the ASP.Net Core pipeline.
-    - expects a valid source accepted by `VersionInformationService`
-    - if `source` is `null` then defaults to using [`UoN.VersionInformation.Providers.AssemblyInformationalVersionProvider`](https://github.com/uon-nuget/UoN.VersionInformation/blob/main/src/UoN.VersionInformation/README.md#assemblyinformationalversionprovider), which in turn uses `AssemblyInformationalVersion` from the current assembly's metadata.
+  - adds a `/version` route to the ASP.Net Core pipeline.
+  - expects a valid source accepted by `VersionInformationService`
+  - if `source` is `null` then defaults to using [`UoN.VersionInformation.Providers.AssemblyInformationalVersionProvider`](https://github.com/uon-nuget/UoN.VersionInformation/blob/main/src/UoN.VersionInformation/README.md#assemblyinformationalversionprovider), which in turn uses `AssemblyInformationalVersion` from the current assembly's metadata.
 - `app.UseUonVersionInformation(path, source)`
-    - behaves as above but with a custom route path
+  - behaves as above but with a custom route path
 
 ## Dependencies
 
@@ -56,7 +63,7 @@ If you can use ASP.NET Core 5.x or newer, you can use this library.
 
 #### `Startup.cs`
 
-``` csharp
+```csharp
 public class Startup
 {
   // ...
@@ -64,11 +71,11 @@ public class Startup
   public void Configure(IApplicationBuilder app, IHostingEnvironment env)
   {
     // ...
-    
+
     app.UseStaticFiles();
 
     app.UseRouting();
-    
+
     app.MapUonVersionInformation(); //adds `/version` endpoint
   }
 }

@@ -1,8 +1,16 @@
 # UoN.VersionInformation.DependencyInjection
 
-[![Build Status](https://github.com/uon-nuget/UoN.VersionInformation/actions/workflows/build.dependencyinjection.yml/badge.svg)](https://github.com/uon-nuget/UoN.VersionInformation/actions/workflows/build.dependencyinjection.yml)
-[![NuGet](https://img.shields.io/nuget/v/UoN.VersionInformation.DependencyInjection.svg)](https://www.nuget.org/packages/UoN.VersionInformation.DependencyInjection/)
-[![License](https://img.shields.io/badge/licence-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Build Status]][Build Workflow]
+[![NuGet Badge]][NuGet Package]
+[![MIT License Badge]][MIT License]
+
+[Build Workflow]: https://github.com/uon-nuget/UoN.VersionInformation/actions/workflows/build.dependencyinjection.yml
+[Build Status]: https://github.com/uon-nuget/UoN.VersionInformation/actions/workflows/build.dependencyinjection.yml/badge.svg
+[NuGet Package]: https://www.nuget.org/packages/UoN.VersionInformation.DependencyInjection/
+[NuGet Badge]: https://img.shields.io/nuget/v/UoN.VersionInformation.DependencyInjection.svg
+
+[MIT License]: https://opensource.org/licenses/MIT
+[MIT License Badge]: https://img.shields.io/badge/licence-MIT-blue.svg
 
 # What is it?
 
