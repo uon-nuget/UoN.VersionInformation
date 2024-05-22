@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard1.5</TargetFramework>
-        <Version>2.0.0-beta.2</Version>
+        <Version>2.0.0</Version>
 
         <Authors>UoN Digital Research Service</Authors>
 
@@ -22,6 +22,7 @@ This release is mostly for branding and versioning consistency due to updates to
 
         <Copyright>Copyright 2024 (c) University of Nottingham.</Copyright>
 
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 
         <PackageIcon>icon.png</PackageIcon>
@@ -31,8 +32,7 @@ This release is mostly for branding and versioning consistency due to updates to
 
         <PackageProjectUrl>https://github.com/uon-nuget/UoN.VersionInformation</PackageProjectUrl>
         <RepositoryUrl>https://github.com/uon-nuget/UoN.VersionInformation</RepositoryUrl>
-        
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+
         <PackageTags>uon version netstandard</PackageTags>
     </PropertyGroup>
 

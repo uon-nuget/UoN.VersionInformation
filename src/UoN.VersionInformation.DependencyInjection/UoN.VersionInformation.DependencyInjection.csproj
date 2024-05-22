@@ -11,14 +11,14 @@
         </Description>
 
         <PackageReleaseNotes>
-            This release is mostly for branding and versioning consistency due to updates to related packages:
+This release is mostly for branding and versioning consistency due to updates to related packages:
 
-            - Updated package metadata, to reflect:
-                - newer best practice for NuGet
-                - source authorship and ownership
-                - repository structure changes
-            - Updated dependencies
-            - Version bumped for consistency with the directly related packages
+- Updated package metadata, to reflect:
+    - newer best practice for NuGet
+    - source authorship and ownership
+    - repository structure changes
+- Updated dependencies
+- Version bumped for consistency with the directly related packages
         </PackageReleaseNotes>
 
         <Copyright>Copyright 2024 (c) University of Nottingham.</Copyright>
