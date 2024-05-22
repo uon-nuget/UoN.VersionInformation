@@ -18,14 +18,14 @@
 
 ## Technical changes
 
-- Extension methods (both ApplicationBuilder and EndpointRouteBuilder) are now in the `Microsoft.Extensions.Builder` namespace
+- Extension methods (both ApplicationBuilder and EndpointRouteBuilder) are now in the `Microsoft.AspNetCore.Builder` namespace
 - Extension method names have changed (primarily adding the `Uon` prefix) to avoid potential collisions in the Microsoft namespace
 - The dependency on `Newtonsoft.Json` has been removed in favour of the built-in `System.Text.Json`.
 - Minimum target is now .NET5
     - Technically this package could probably still be more broadly usable than that, but it is explicitly for ASP.NET Core, so targeting minimum unified .NET made sense.
 
 ## Fixes
-- Since .NET8 the middleware was crashing due to the `Newtonsoft.Json` dependency without further configuration. Removal of that dependency resolves this issue and retains "zero-config"
+- Since .NET8 the middleware was crashing due to the `Newtonsoft.Json` dependency, without further configuration. Removal of that dependency resolves this issue and retains "zero-config"
         </PackageReleaseNotes>
 
         <Copyright>Copyright 2024 (c) University of Nottingham.</Copyright>
@@ -54,7 +54,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
         <PackageReference Include="UoN.VersionInformation" Version="2.0.0-beta.2" />
     </ItemGroup>
 
