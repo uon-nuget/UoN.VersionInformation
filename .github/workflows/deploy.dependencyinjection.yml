@@ -1,0 +1,59 @@
+name: Deploy UoN.VersionInformation.DependencyInjection
+
+on:
+  workflow_dispatch:
+
+env:
+  # Configure these
+  build-config: release
+  dotnet-version: 8.0.x
+  project: ./src/UoN.VersionInformation.DependencyInjection/UoN.VersionInformation.DependencyInjection.csproj
+
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_NOLOGO: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.dotnet-version }}
+
+      - name: Read version
+        id: version
+        uses: bbonkr/get-version-action@v1
+        with:
+          project: ${{ env.project }}
+
+      - name: dotnet pack
+        run: >-
+          dotnet pack
+          ${{ env.project }}
+          -c ${{ env.build-config }}
+          -o ${{ github.workspace }}
+
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: dependencyinjection-v${{ steps.version.outputs.version }}
+          commit: ${{ github.sha }}
+          name: UoN.VersionInformation.DependencyInjection v${{ steps.version.outputs.version }}
+          body: |
+            # `UoN.VersionInformation.DependencyInjection` v${{ steps.version.outputs.version }}
+
+            https://www.nuget.org/packages/UoN.VersionInformation.DependencyInjection/${{ steps.version.outputs.version }}
+          generateReleaseNotes: true
+          prerelease: ${{ steps.version.outputs.pre-release != '' }}
+          makeLatest: true
+          artifacts: '*.nupkg'
+          artifactContentType: application/zip
+      
+      - name: Publish to NuGet
+        run: >-
+          dotnet nuget push *.nupkg 
+          --api-key ${{secrets.NUGET_PUBLISH_KEY}}
+          --source https://api.nuget.org/v3/index.json

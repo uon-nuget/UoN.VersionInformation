@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -17,8 +16,7 @@ namespace UoN.VersionInformation.Providers
 
         public KeyValueFileProvider(
             string filePath = null,
-            string delimiter = "=")
-            : base(filePath)
+            string delimiter = "=") : base(filePath)
         {
             Delimiter = delimiter;
         }
@@ -37,6 +35,7 @@ namespace UoN.VersionInformation.Providers
                     var parts = line.Split(new[] { '=' }, 2);
                     result.Add(parts[0], parts[1]);
                 }
+
                 return result;
             }
         }

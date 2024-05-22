@@ -6,7 +6,7 @@ namespace UoN.VersionInformation.Providers
 {
     /// <summary>
     /// A naive provider of version information that simply reads
-    /// all of the text content in a file and returns it as a string.
+    /// all the text content in a file and returns it as a string.
     /// 
     /// Can be used as a base class for other File providers.
     /// </summary>
@@ -30,11 +30,15 @@ namespace UoN.VersionInformation.Providers
             try
             {
                 using (var reader = File.OpenText((string)source))
+                {
                     return await reader.ReadToEndAsync();
-            } catch
+                }
+            }
+            catch (Exception e) when (e is DirectoryNotFoundException || e is FileNotFoundException)
             {
                 if (!FileOptional) throw;
             }
+
             return null;
         }
     }
