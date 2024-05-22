@@ -1,9 +1,6 @@
 name: Deploy UoN.VersionInformation.DependencyInjection
 
 on:
-  pull_request: # TODO remove
-    branches:
-      - main
   workflow_dispatch:
 
 env:
