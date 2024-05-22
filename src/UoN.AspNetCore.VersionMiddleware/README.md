@@ -13,7 +13,7 @@ We use it at UoN so that we can check the version of a web app wherever it's dep
 
 ## What are its features?
 
-It exposes the version output of [UoN.VersionInformation](../UoN.VersionInformation/README.md) as JSON data at an http endpoint.
+It exposes the version output of [UoN.VersionInformation](https://github.com/uon-nuget/UoN.VersionInformation/blob/main/src/UoN.VersionInformation/README.md) as JSON data at an http endpoint.
 
 ### Middleware Extension Methods
 
@@ -42,7 +42,7 @@ It provides two traditional "Terminal Middleware" `IApplicationBuilder` Extensio
 - `app.UseUonVersionInformation(source)`
     - adds a `/version` route to the ASP.Net Core pipeline.
     - expects a valid source accepted by `VersionInformationService`
-    - if `source` is `null` then defaults to using [`UoN.VersionInformation.Providers.AssemblyInformationalVersionProvider`](../UoN.VersionInformation/README.md), which in turn uses `AssemblyInformationalVersion` from the current assembly's metadata.
+    - if `source` is `null` then defaults to using [`UoN.VersionInformation.Providers.AssemblyInformationalVersionProvider`](https://github.com/uon-nuget/UoN.VersionInformation/blob/main/src/UoN.VersionInformation/README.md#assemblyinformationalversionprovider), which in turn uses `AssemblyInformationalVersion` from the current assembly's metadata.
 - `app.UseUonVersionInformation(path, source)`
     - behaves as above but with a custom route path
 
