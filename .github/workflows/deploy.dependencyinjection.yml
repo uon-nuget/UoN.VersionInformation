@@ -42,7 +42,7 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag: versioninformation-v${{ steps.version.outputs.version }}
+          tag: dependencyinjection-v${{ steps.version.outputs.version }}
           commit: ${{ github.sha }}
           name: UoN.VersionInformation.DependencyInjection v${{ steps.version.outputs.version }}
           body: |
