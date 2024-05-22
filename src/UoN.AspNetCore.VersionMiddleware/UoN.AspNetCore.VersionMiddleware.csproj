@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
-        <Version>2.0.0-beta.1</Version>
+        <Version>2.0.0</Version>
         <Nullable>enable</Nullable>
 
         <Authors>UoN Digital Research Service</Authors>
@@ -54,7 +54,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="UoN.VersionInformation" Version="2.0.0-beta.2" />
+        <PackageReference Include="UoN.VersionInformation" Version="2.0.0" />
     </ItemGroup>
 
     <!-- For development -->
